@@ -6,7 +6,7 @@ import coins from "./coins/reducer";
 import coinDetail from "./coinDetail/reducer";
 import coinsNews from "./cryptoNewos/reducer";
 import coinHistory from "./coinHistory/reducer";
-
+import exchanges from "./coinExchanges/reducer";
 const persistConfig = {
   key: "KEY-1",
   storage,
@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
   coinDetail,
   coinsNews,
   coinHistory,
+  exchanges,
 });
 
 export default persistReducer(persistConfig, rootReducer);

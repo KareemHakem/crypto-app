@@ -10,6 +10,7 @@ import millify from "millify";
 import { Col, Row, Typography, Select } from "antd";
 
 import LineChart from "../LineChart";
+import { Loader } from "../Loader";
 
 import {
   MoneyCollectOutlined,
@@ -103,10 +104,10 @@ export const CryptoDetails = () => {
     },
   ];
 
-  if (loading) return "loading........";
+  if (loading) return <Loader />;
   if (error) return "error...";
 
-  if (historyLoading) return "loading........";
+  if (historyLoading) return <Loader />;
   if (historyError) return ".....error";
 
   return (

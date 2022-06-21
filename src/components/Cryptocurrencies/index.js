@@ -7,7 +7,8 @@ import millify from "millify";
 import { Card, Row, Col, Input } from "antd";
 
 import { getCoins } from "../../redux/coins/action";
-import { SmileFilled } from "@ant-design/icons";
+
+import { Loader } from "../Loader";
 
 export const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
@@ -27,7 +28,7 @@ export const Cryptocurrencies = ({ simplified }) => {
     setCryptos(filterData);
   }, [data?.data?.coins.length, search]);
 
-  if (loading) return "loading.....";
+  if (loading) return <Loader />;
   if (error) return "error...";
   return (
     <>

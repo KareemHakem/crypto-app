@@ -1,27 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Row, Typography, Col, Statistic } from "antd";
 import millify from "millify";
 
-import { GoldenFilled } from "@ant-design/icons";
+// import { GoldenFilled } from "@ant-design/icons";
 import { Cryptocurrencies } from "../Cryptocurrencies";
 import { News } from "../News";
+import { Loader } from "../Loader";
 
 const { Title } = Typography;
 
 const HomePage = () => {
   const { data, loading, error } = useSelector((state) => state.coins);
 
-  const dispatch = useDispatch();
-
   const globalStats = data?.data?.stats;
-  const coins = data?.data?.coins;
 
+  if (loading) return <Loader />;
   if (error) return "error.....";
-  if (loading) return "loading.....";
 
   return (
     <>

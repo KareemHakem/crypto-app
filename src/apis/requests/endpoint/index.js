@@ -4,4 +4,5 @@ export const endpoint = {
   news: "news",
   search: "search",
   history: "history/",
+  exchanges: "exchanges",
 };
