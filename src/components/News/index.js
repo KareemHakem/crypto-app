@@ -47,18 +47,18 @@ export const News = ({ simplified }) => {
           >
             <Option value="Cryptocurency">Cryptocurrency</Option>
             {data?.data?.coins?.map((currency) => (
-              <Option value={currency.name}>{currency.name}</Option>
+              <Option value={currency?.name}>{currency?.name}</Option>
             ))}
           </Select>
         </Col>
       )}
-      {cryptoNews.value.map((news, i) => (
+      {cryptoNews?.value?.map((news, i) => (
         <Col xs={24} sm={12} lg={8} key={i}>
           <Card hoverable className="news-card">
-            <a href={news.url} target="_blank" rel="noreferrer">
+            <a href={news?.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title className="news-title" level={4}>
-                  {news.name}
+                  {news?.name}
                 </Title>
                 <img
                   className="news-images"
@@ -67,7 +67,7 @@ export const News = ({ simplified }) => {
                 />
               </div>
               <p>
-                {news.description > 100
+                {news?.description > 100
                   ? `${news.description.substring(0, 100)}...`
                   : news.description}
               </p>
@@ -81,10 +81,10 @@ export const News = ({ simplified }) => {
                     alt="news"
                   />
                   <Text className="provider-name">
-                    {news.provider[0]?.name}
+                    {news?.provider[0]?.name}
                   </Text>
                 </div>
-                <Text>{news.datePublished}</Text>
+                <Text>{news?.datePublished}</Text>
               </div>
             </a>
           </Card>

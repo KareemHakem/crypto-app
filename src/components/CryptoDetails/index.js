@@ -36,10 +36,13 @@ export const CryptoDetails = () => {
     error: historyError,
   } = useSelector((state) => state.coinHistory);
 
+  console.log(data, "datadatadatadatadatadata");
+
   const { coinId } = useParams();
   const dispatch = useDispatch();
 
   const cryptoDetails = data?.data?.coin;
+  console.log("cryptoDetails", cryptoDetails);
 
   useEffect(() => {
     dispatch(getCoinsDetails(coinId));
@@ -51,23 +54,25 @@ export const CryptoDetails = () => {
   const stats = [
     {
       title: "Price to USD",
-      value: `$ ${cryptoDetails.price && millify(cryptoDetails.price)}`,
+      value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`,
       icon: <DollarCircleOutlined />,
     },
-    { title: "Rank", value: cryptoDetails.rank, icon: <NumberOutlined /> },
+    { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "24h Volume",
-      value: `$ ${cryptoDetails.listedAt && millify(cryptoDetails.listedAt)}`,
+      value: `$ ${cryptoDetails?.listedAt && millify(cryptoDetails?.listedAt)}`,
       icon: <ThunderboltOutlined />,
     },
     {
       title: "Market Cap",
-      value: `$ ${cryptoDetails.marketCap && millify(cryptoDetails.marketCap)}`,
+      value: `$ ${
+        cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)
+      }`,
       icon: <DollarCircleOutlined />,
     },
     {
       title: "All-time-high(daily avg.)",
-      value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`,
+      value: `$ ${millify(cryptoDetails?.allTimeHigh?.price)}`,
       icon: <TrophyOutlined />,
     },
   ];
@@ -75,17 +80,17 @@ export const CryptoDetails = () => {
   const genericStats = [
     {
       title: "Number Of Markets",
-      value: cryptoDetails.numberOfMarkets,
+      value: cryptoDetails?.numberOfMarkets,
       icon: <FundOutlined />,
     },
     {
       title: "Number Of Exchanges",
-      value: cryptoDetails.numberOfExchanges,
+      value: cryptoDetails?.numberOfExchanges,
       icon: <MoneyCollectOutlined />,
     },
     {
       title: "Aprroved Supply",
-      value: cryptoDetails.approvedSupply ? (
+      value: cryptoDetails?.approvedSupply ? (
         <CheckOutlined />
       ) : (
         <StopOutlined />
@@ -94,12 +99,12 @@ export const CryptoDetails = () => {
     },
     {
       title: "Total Supply",
-      value: cryptoDetails.supply.total,
+      value: cryptoDetails?.supply?.total,
       icon: <ExclamationCircleOutlined />,
     },
     {
       title: "Circulating Supply",
-      value: cryptoDetails.supply.circulating,
+      value: cryptoDetails?.supply?.circulating,
       icon: <ExclamationCircleOutlined />,
     },
   ];
@@ -114,11 +119,11 @@ export const CryptoDetails = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
-          {data?.data?.coin.name} ({millify(data?.data?.coin.allTimeHigh.price)}
+          {data?.data?.coin?.name} ({millify(data?.data?.coin?.allTimeHigh?.price)}
           ) Price
         </Title>
         <p>
-          {cryptoDetails.name} live price in US Dollar (USD). View value
+          {cryptoDetails?.name} live price in US Dollar (USD). View value
           statistics, market cap and supply.
         </p>
       </Col>
@@ -135,18 +140,18 @@ export const CryptoDetails = () => {
 
       <LineChart
         coinHistory={coinHistory}
-        currentPrice={millify(cryptoDetails.price)}
-        coinName={cryptoDetails.name}
+        currentPrice={millify(cryptoDetails?.price)}
+        coinName={cryptoDetails?.name}
       />
 
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">
-              {cryptoDetails.name} Value Statistics
+              {cryptoDetails?.name} Value Statistics
             </Title>
             <p>
-              An overview showing the statistics of {cryptoDetails.name}, such
+              An overview showing the statistics of {cryptoDetails?.name}, such
               as the base and quote currency, the rank, and trading volume.
             </p>
           </Col>
@@ -182,21 +187,21 @@ export const CryptoDetails = () => {
       <Col className="coin-desc-link">
         <Row className="coin-desc">
           <Title level={3} className="coin-details-heading">
-            what is {cryptoDetails.name}
+            what is {cryptoDetails?.name}
           </Title>
-          {HTMLReactParser(cryptoDetails.description)}
+          {HTMLReactParser(cryptoDetails?.description)}
         </Row>
         <Col className="coin-links">
           <Title level={3} className="coin-details-heading">
-            {cryptoDetails.name} Links
+            {cryptoDetails?.name} Links
           </Title>
-          {cryptoDetails.links.map((link) => (
-            <Row className="coin-link" key={link.name}>
+          {cryptoDetails?.links.map((link) => (
+            <Row className="coin-link" key={link?.name}>
               <Title level={5} className="link-name">
-                {link.type}
+                {link?.type}
               </Title>
-              <a href={link.url} target="_blank" rel="noreferrer">
-                {link.name}
+              <a href={link?.url} target="_blank" rel="noreferrer">
+                {link?.name}
               </a>
             </Row>
           ))}

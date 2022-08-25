@@ -17,16 +17,19 @@ export const Cryptocurrencies = ({ simplified }) => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
+  console.log("cryptos", cryptos);
+
   useEffect(() => {
     dispatch(getCoins(count));
   }, [dispatch, count]);
 
   useEffect(() => {
     const filterData = data?.data?.coins.filter((coin) =>
-      coin.name.toLowerCase().includes(search.toLocaleLowerCase())
+      coin?.name?.toLowerCase().includes(search?.toLocaleLowerCase())
     );
+    console.log("filterData", filterData);
     setCryptos(filterData);
-  }, [data?.data?.coins.length, search]);
+  }, [data?.data?.coins, search]);
 
   if (loading) return <Loader />;
   if (error) return "error...";
@@ -47,23 +50,23 @@ export const Cryptocurrencies = ({ simplified }) => {
             sm={12}
             lg={6}
             className="crypto-card"
-            key={currency.rank}
+            key={currency?.rank}
           >
-            <Link to={`/crypto/${currency.uuid}`}>
+            <Link to={`/crypto/${currency?.uuid}`}>
               <Card
-                title={`${currency.rank}. ${currency.name}`}
+                title={`${currency?.rank}. ${currency?.name}`}
                 extra={
                   <img
                     className="crypto-image"
-                    src={currency.iconUrl}
+                    src={currency?.iconUrl}
                     alt="cryptoImage"
                   />
                 }
                 hoverable
               >
-                <p>Price: {millify(currency.price)}</p>
-                <p>Market Cap: {millify(currency.marketCap)}</p>
-                <p>Daily Change: {millify(currency.change)}%</p>
+                <p>Price: {millify(currency?.price)}</p>
+                <p>Market Cap: {millify(currency?.marketCap)}</p>
+                <p>Daily Change: {millify(currency?.change)}%</p>
               </Card>
             </Link>
           </Col>
