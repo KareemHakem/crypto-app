@@ -54,25 +54,23 @@ export const CryptoDetails = () => {
   const stats = [
     {
       title: "Price to USD",
-      value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`,
+      value: `$ ${cryptoDetails?.price && cryptoDetails?.price}`,
       icon: <DollarCircleOutlined />,
     },
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "24h Volume",
-      value: `$ ${cryptoDetails?.listedAt && millify(cryptoDetails?.listedAt)}`,
+      value: `$ ${cryptoDetails?.listedAt && cryptoDetails?.listedAt}`,
       icon: <ThunderboltOutlined />,
     },
     {
       title: "Market Cap",
-      value: `$ ${
-        cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)
-      }`,
+      value: `$ ${cryptoDetails?.marketCap && cryptoDetails?.marketCap}`,
       icon: <DollarCircleOutlined />,
     },
     {
       title: "All-time-high(daily avg.)",
-      value: `$ ${millify(cryptoDetails?.allTimeHigh?.price)}`,
+      value: `$ ${cryptoDetails?.allTimeHigh?.price}`,
       icon: <TrophyOutlined />,
     },
   ];
@@ -119,8 +117,8 @@ export const CryptoDetails = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
-          {data?.data?.coin?.name} ({millify(data?.data?.coin?.allTimeHigh?.price)}
-          ) Price
+          {data?.data?.coin?.name} ({data?.data?.coin?.allTimeHigh?.price})
+          Price
         </Title>
         <p>
           {cryptoDetails?.name} live price in US Dollar (USD). View value
@@ -140,7 +138,7 @@ export const CryptoDetails = () => {
 
       <LineChart
         coinHistory={coinHistory}
-        currentPrice={millify(cryptoDetails?.price)}
+        currentPrice={cryptoDetails?.price}
         coinName={cryptoDetails?.name}
       />
 
