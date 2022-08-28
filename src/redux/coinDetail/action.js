@@ -7,7 +7,7 @@ export const getCoinsDetails = (coinId) => async (dispatch) => {
   try {
     const { data } = await axios.get(`${endpoint.coin}${coinId}`);
     dispatch({ type: type.GET_COINS_DETAILS_SUCCESS, payload: data });
-    console.log(data);
+    console.log(data, "data coinssssssss");
   } catch (error) {
     dispatch({ type: type.GET_COINS_DETAILS_ERROR, payload: error });
   }

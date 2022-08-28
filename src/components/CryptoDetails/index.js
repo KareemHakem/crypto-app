@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCoinsDetails } from "../../redux/coinDetail/action";
 import { getCoinHistory } from "../../redux/coinHistory/action";
 
+import millify from "millify";
 import { Col, Row, Typography, Select } from "antd";
 
 import LineChart from "../LineChart";
@@ -34,6 +35,8 @@ export const CryptoDetails = () => {
     loading: historyLoading,
     error: historyError,
   } = useSelector((state) => state.coinHistory);
+
+  console.log(coinHistory, "coinHistorycoinHistorycoinHistory");
 
   console.log(data, "datadatadatadatadatadata");
 
