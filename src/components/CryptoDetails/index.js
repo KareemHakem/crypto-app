@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCoinsDetails } from "../../redux/coinDetail/action";
 import { getCoinHistory } from "../../redux/coinHistory/action";
 
-import millify from "millify";
 import { Col, Row, Typography, Select } from "antd";
 
 import LineChart from "../LineChart";
