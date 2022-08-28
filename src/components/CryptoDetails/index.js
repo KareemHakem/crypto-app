@@ -36,7 +36,7 @@ export const CryptoDetails = () => {
     error: historyError,
   } = useSelector((state) => state.coinHistory);
 
-  console.log(coinHistory, "coinHistorycoinHistorycoinHistory");
+  console.log(coinHistory.data, "coinHistorycoinHistorycoinHistory");
 
   console.log(data, "datadatadatadatadatadata");
 
@@ -133,7 +133,7 @@ export const CryptoDetails = () => {
         placeholder="Select Timeperiod"
         onChange={(value) => setTimePeriod(value)}
       >
-        {time.map((date) => (
+        {time?.map((date) => (
           <Option key={date}>{date}</Option>
         ))}
       </Select>
@@ -155,7 +155,7 @@ export const CryptoDetails = () => {
               as the base and quote currency, the rank, and trading volume.
             </p>
           </Col>
-          {stats.map(({ icon, title, value }) => (
+          {stats?.map(({ icon, title, value }) => (
             <Col className="coin-stats">
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
@@ -173,7 +173,7 @@ export const CryptoDetails = () => {
             </Title>
             <p>An overview showing the statistics of all Cryptocurrencies</p>
           </Col>
-          {genericStats.map(({ icon, title, value }) => (
+          {genericStats?.map(({ icon, title, value }) => (
             <Col className="coin-stats">
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
